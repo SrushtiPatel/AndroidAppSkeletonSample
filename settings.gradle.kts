@@ -23,7 +23,8 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "AndroidSampleProject"
+
 include(":app")
+include(":core")
 include(":feature-auth")
 include(":feature-home")
-include(":core")
