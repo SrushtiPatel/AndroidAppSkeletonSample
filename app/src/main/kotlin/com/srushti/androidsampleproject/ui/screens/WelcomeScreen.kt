@@ -23,11 +23,12 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.srushti.androidsampleproject.R
+import com.srushti.androidsampleproject.navigation.Routes
 
-@Preview(showBackground = true)
 @Composable
-fun WelcomeScreen() {
+fun WelcomeScreen(navController: NavController) {
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -64,13 +65,15 @@ fun WelcomeScreen() {
 
             Spacer(modifier = Modifier.height(40.dp))
             Button(
-                modifier = Modifier.fillMaxWidth().height(50.dp),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(50.dp),
                 shape = RoundedCornerShape(10.dp),
                 colors = androidx.compose.material3.ButtonDefaults.buttonColors(
                     containerColor = Color.Yellow,
                     contentColor = Color.Black
                 ),
-                onClick = {}) {
+                onClick = { navController.navigate(Routes.SportsList.name) }) {
                 Text("Get Started", fontSize = 18.sp)
             }
         }
