@@ -1,7 +1,7 @@
 package com.srushti.androidsampleproject.navigation
 
 enum class Routes {
-    Welcome, SportsList
+    Welcome, SportsList, SportsDetail
 
 //    @Serializable
 //    object WelcomeScreen: Routes()

@@ -15,6 +15,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.srushti.androidsampleproject.navigation.Routes
 import com.srushti.androidsampleproject.ui.SportsListViewModel
+import com.srushti.androidsampleproject.ui.screens.SportsDetailScreen
 import com.srushti.androidsampleproject.ui.screens.SportsListScreen
 import com.srushti.androidsampleproject.ui.screens.WelcomeScreen
 import com.srushti.androidsampleproject.ui.theme.AndroidSampleProjectTheme
@@ -31,7 +32,6 @@ class MainActivity : ComponentActivity() {
             AndroidSampleProjectTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     NavHost(
-                        sportsListViewModel = sportsListViewModel,
                         modifier = Modifier.padding(innerPadding)
                     )
                 }
@@ -41,7 +41,7 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun NavHost(sportsListViewModel: SportsListViewModel, modifier: Modifier = Modifier) {
+fun NavHost(modifier: Modifier = Modifier) {
 //    SportsListScreen(sportsListViewModel)
     val navController = rememberNavController()
     NavHost(navController = navController, startDestination = Routes.Welcome.name) {
@@ -49,7 +49,10 @@ fun NavHost(sportsListViewModel: SportsListViewModel, modifier: Modifier = Modif
             WelcomeScreen(navController)
         }
         composable(Routes.SportsList.name) {
-            SportsListScreen(sportsListViewModel)
+            SportsListScreen(navController)
+        }
+        composable(Routes.SportsDetail.name) {
+            SportsDetailScreen(navController)
         }
     }
 
